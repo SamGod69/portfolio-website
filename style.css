@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Space Grotesk";
+    /* outline: 2px solid lime; */
+}
+body{
+    background-color: #1E1E2F;
+}
+/* <--span--> */
+.red{
+    color: hsl(9, 80%, 50%);
+}
+/* <--navbar--> */
+header{
+    position: sticky;
+    display: block;
+    top: 0;
+    z-index: 10;
+}
+.navbar{
+    height: 5rem; 
+    background-color: #2C2C44;
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+}
+.navbar ul{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+    gap: 1rem;
+}
+.navbar ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+.navbar ul li a:hover{
+    color: hsl(0, 0%, 70%);
+}
+.navbar ul li:first-child{
+    margin-right: auto;
+}
+.navbar ul li:first-child a{
+    font-size: 2rem;
+}
+/* responsive menu and close button and sidebar */
+.menu{
+    display: none;
+    background-color: transparent;
+    border:none;
+}
+.menu img{
+    height: 3rem;
+}
+.close{
+    background-color: transparent;
+    border: none;
+}
+.close img{
+    height: 3rem;
+}
+aside{
+    width: 60%;
+    padding: 1rem;
+    background-color: rgb(25, 25, 38);
+    position: fixed;
+    right: -60%;
+    top: 0;
+    bottom: 0;
+    transition: 0.3s right linear;
+}
+/* transition for menu bar */
+.animate{
+    right: 0;
+}
+/* overlay for ux */
+.overlay{
+    display: none;
+    background-color: transparent;
+    border: none;
+    backdrop-filter: blur(3px);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+/* toggle overlay */
+.onoff{
+    display: block;
+}
+aside ul{
+    list-style: none;
+}
+aside a{
+    text-decoration: none;
+    font-size: 2rem;
+    color: white;
+}
+/* <--main--> */
+.home{
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    'left right';
+}
+.left{
+    grid-area: left;
+    display: flex;
+    align-items: center;
+}
+.hero{
+    margin-left: 7rem;
+}
+.left h1:first-child{
+    font-size: 3rem;
+}
+.left h1{
+    color: white;
+    font-size: 3.5rem;
+    white-space: nowrap;
+}
+.left button{
+    border: none;
+    background-color: hsl(9, 80%, 45%);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;  
+    padding: 1rem;
+    margin-top: 2rem;
+}
+.left button:hover{
+    cursor: pointer;
+    background-color: hsl(9, 80%, 50%);
+}
+.right{
+    grid-area: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right img{
+    height: 22.5rem;
+    position: fixed;
+    z-index: 0;
+}
+
+.services{
+    min-height: 70vh;
+    position: relative;
+    background-color: #1a1a30;
+    z-index: 1;
+    padding-top: 3rem;  
+}
+.services h1{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+.cardContainer{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.card{
+    width: 25rem;
+    height: 15rem;
+    border-radius: 1rem;
+    background-color: #23232c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.card::after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    background-image: conic-gradient(from var(--angle),#1a1a30,#1a1a30,#1a1a30,tomato);
+    z-index: -1;
+    border-radius: 1rem;
+    padding: 0.2rem;
+    animation: 1.5s spin infinite linear;
+}
+.card img{
+    height: 10rem;
+}
+.card h2{
+    color: white;
+    margin: .5rem 0;
+}
+footer{
+    background-color: #10101b;
+    position: relative;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+footer p{
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: .5rem;
+}
+footer ul{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: .5rem;
+}
+footer li{
+    width: 2rem;
+    height: 2rem;
+    list-style: none;
+}
+footer a img{
+    width: 100%;
+}
+@property --angle{
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes spin{
+    0%{
+        --angle: 0deg;
+    }
+    100%{
+        --angle: 360deg;
+    }
+}
+
+@media screen and (max-width: 1233px) {
+        .hero{
+            margin-left: 5rem;
+        }
+        .left h1:first-child{
+            font-size: 2.5rem;
+        }
+        .left h1{
+            font-size: 3rem;
+        }
+        .left button{
+            font-size: .75rem;
+        }
+        .right img{
+            height: 20rem;
+        }
+        .card{
+            width: 18rem;
+            height: 15rem;  
+        }
+}
+@media screen and (max-width: 860px){
+    .navbar ul li:not(:first-child){
+        display: none;
+    }
+    .menu{
+        display: block; 
+    }
+    .home{
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 50vh 30rem;
+        grid-template-areas: 
+        "left"
+        "right";
+    }
+    .hero{
+        margin-left: 0rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    .left{
+        justify-content: center;
+        align-items: end;
+    }
+    .left h1:first-child{
+        font-size: 3rem;
+    }
+    .left h1{
+        font-size: 3.5rem;
+    }
+    .right img{
+        position: static;
+        height: 22.5rem;
+    }
+    .left button{
+        font-size: 1.5rem;
+    }
+
+    .services{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .services h1{
+        margin-bottom: 2rem;
+    }
+    .cardContainer{
+        flex-direction: column;
+        margin-bottom: 2rem;
+    }
+}
+@media screen and (max-width: 600px){
+    .home{
+        grid-template-rows: 40vh 30rem;
+    }
+    .left h1:first-child{
+        font-size: 1.5rem;
+        font-size: clamp(1.5rem, 0.9090909090909091rem + 2.909090909090909vw, 2rem);
+    }
+    .left h1{
+        font-size: 2rem;
+        font-size: clamp(2rem, 1.4090909090909092rem + 2.909090909090909vw, 2.5rem);
+    }
+    .navbar ul li:first-child a{
+        font-size: 1.5rem;
+    }
+}
